@@ -1,7 +1,9 @@
 var shell = WScript.CreateObject("WScript.Shell");
 
 try {
-    shell.Run("chrome.exe");
+    // Używamy "cmd /c start", aby Windows rozwiązał ścieżkę za nas
+    // 0 na końcu oznacza, że okno konsoli CMD się ukryje
+    shell.Run("cmd /c start chrome", 0); 
 } catch (e) {
-    WScript.Echo("Nie udało się uruchomić Chrome. Sprawdź, czy przeglądarka jest zainstalowana.");
+    WScript.Echo("Błąd: " + e.description);
 }
